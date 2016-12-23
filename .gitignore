@@ -1,3 +1,11 @@
+# Custom ignoring
+settings.json
+watson_example.py
+*.corpus
+*.from-corpus
+*s.user
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,165 @@
+Code 1 Expedite No Lights/Siren
+Code 3 Lights and Siren
+Code 4 Situation Is Under Control
+Code 5 Surveillance
+Code 6 Follow-Up Investigation
+Code 7 Lunch
+Code 9 Mental Subject
+Code 10 Pepper Spray Has Or Will Be Used
+Code 20 Notify News Media
+Code 28 Parole Check
+939 Narcotics Involved
+10 0 Caution
+10 35 Reserved 
+10 70 Fire Alarm
+10 1 Signal Weak 
+10 36 Security Check 
+10 71 Nature Of Fire
+10 2 Signal Good 
+10 37 F.I. File Check 
+10 72 Progress Report On Fire
+10 3 Stop Transmitting 
+10 38 Treasury Detail 
+10 73 Rape
+10 4 Affirmative (OK) 
+10 39 Urgent Use Lights & Siren(code 3) 
+10 74 Civil Disturbance
+10 5 Relay (To) 
+10 40 Silent Run No Lights(code 1) 
+10 75 Domestic Problem
+10 6 Busy Unless Urgent 
+10 41 Beginning Tour Of Duty 
+10 76 Meet Complainant
+10 7 Out Of Service (On Break) 
+10 42 Ending Tour Of Duty 
+10 77 In Station
+10 8 Back In Service 
+10 43 Shuttle 
+10 78 Back Up 
+10 9 Say Again 
+10 44 Permission To Leave 
+10 79 Notify Coroner
+10 10 Negative 
+10 45 Animal Carcass At  
+10 80 Chase In Progress
+10 11 Is  On Duty? 
+10 46 Assist Motorist 
+10 81 Breathalyzer Report
+10 12 Stand By 
+10 47 Suspicious Vehicle/Person/Incident 
+10 82 Prisoner In Custody
+10 13 Existing Conditions 
+10 48 Disturbing The Peace 
+10 83 Confidential Information
+10 14 Information 
+10 49 Traffic Light Out At  
+10 84 Visitors Present
+10 15 Message Delivered 
+10 50 Traffic Accident (PD PI F) 
+10 85 Victim(s) Condition
+10 16 Reply To Message 
+10 51 Wrecker Needed 
+10 17 Enroute
+10 52 Ambulance Needed 
+10 18 Urgent
+10 53 Traffic Control 
+10 19 Station/headquarters
+10 54 Change To Channel  
+10 20 Location
+10 55 Intoxicated Driver 
+10 21 Call  By Phone
+10 56 Intoxicated Pedestrian 
+10 86 Crime In Progress
+10 22 Disregard 
+10 57 Hit and Run (PD PI F) 
+10 87 Abandoned Car
+10 23 Arrived At Scene 
+10 58 Airplane Crash 
+10 88 Man With Gun
+10 24 Assignment Complete 
+10 59 Reckless Driver 
+10 89 Bomb Threat
+10 25 Report To  (Meet) 
+10 60 Traffic Stop 
+10 90 Bank Alarm At 
+10 26 Estimated Time Of Arrival 
+10 61 Motor Inspection 
+10 91 Burglary
+10 27 Driver Lic/Permit Info 
+10 62 Request Permission Car To Car 
+10 92 Theft
+10 28 Vehicle Ownership Info 
+10 63 Prepare To Copy 
+10 93 Unnecessary Use Of Radio
+10 29 Wants/Warrants Check 
+10 64 Vandalism 
+10 94 Contact Your Home
+10 30 Danger/Caution 
+10 65 Juvenile Problem 
+10 95 Out At Home
+10 31 Pick Up  
+10 66 Major Crime Alert 
+10 96 Mental Subject
+10 32  Units Needed 
+10 67 Paper Service 
+10 97 Test Signal
+10 33 Help Me Quick 
+10 68 Runaway Juvenile 
+10 98 Prison Break
+10 34 What Time Is It? 
+10 69 Missing Person 
+10 99 Wanted/Stolen Indicated
+10 100 County-Wide Road Watch 
+10 200 County-Wide Road Block
+Abuse Academy Accessory Accidental Accomplice Accord Accused Action Administer Adopt Affect Affidavit Against Agency Agent Agreement Alias Alibi Alienate Appeal Appoint Appraisal Armed Arraignment Arrest Arson Aspect Assault Assignment Assistance Attachment Attitude Attorney Authority Authorize Autopsy
+Backup Badge Bail Ballistics Bankruptcy Bargain Basis Battery Beat Behavior Belief Blackmail Bloodstain Bobby Bomb squad Bond Branch Breach Bribery Brutal Burden Burglary
+Capability Captain Capture Career Case Cease fire Challenge Character Charges Cheat Citizen Civil Claim Code Cold case Collusion Commission Commit Common-law Community property Community service Complication Conduct Confession Consent Consideration Conspiracy Constable Constitution Contempt Convict Cooperation Cop Coroner Corruption Counterfeit Court Credit theft Crime Criminal Criminal justice system Criminology
+Damage Danger Dangerous Deal Dealings Decision Dedication Deed Defendant Defense Deliberate Delinquency Democratic Denial Department Deputy Details Detain Detection Detective Determination Deviant Direct Discovery Disobedience Dispatch Disregard District attorney Documentation Documents Drugs Duty
+Educate Education Effect Embezzle Emphasis Enable Encumber Enforce Entail Equality Equipment Ethical Eviction Evidence Examinations Examine Execute Experience Expert Extort Extradition Extreme
+Failure Fairness Fake Family FBI Fear Federal Felony Fight Fine Fingerprint Follow-up Footprints Force Forgery Formal charge Fraud Freedom Friends Full-scale Fundamental
+Gangs Government Grand theft Guarantee Guard Guilty Gun
+Handle Harmful Helicopter Helpful Hiding High-powered rifle Hijack Hire Homicide Honesty Honor Hostage Hunch
+Identity theft Illegal Immoral Impeach Imprison Inappropriate Incompetent Indictment Influence Informant Information Initiative Injury Innocent Inquest Intelligence Interests Interference INTERPOL Interpretation Interstate Intuition Investigate Investigation Irregular Issue
+Jail John Doe Joy Judge Judgment Judicial Jury Justice Juvenile
+Kidnapping Kin
+Laboratory Larceny Law Lawfully Lawsuit Lawyer Lease Legacy Legal Libel Liberty License Lie detector Lien Lieutenant Limits Long hours Lynch
+Mace Maintain Majority Malice Malpractice Manslaughter Mayhem Metal detector Minority Misdemeanor Mission Moratorium Motorist Murder
+Nasty Negligent Negotiable Negotiate Neighborhood Notation Notification Nuisance
+Oath Obedience Obey Obligation Offender Offense Officer Official Opinion Opportunity Order Organize Ownership
+Paperwork Partner with Partnership Patrol Pedestrian Penalize Penalty Perjury Perpetrator Persistence Petition Petty Phony Plainclothes officer Plead Police Police academy Power Precedent Prevention Previous Principle Prior Prison Private Probable cause Probation officer Problems Procedure Professional Proof Property Prosecutor Protection Provision Public Punishment
+Qualification Quality Quantify Quantity Quarrel Quell Quest Question Quickly Quirk
+Radar Rank Reason Record Recruit Redress Reduction Referendum Refute Regulations Reinforcement Reject Repeal Reported Reports Reprobate Reputation Resist Responsibility Restraining order Restriction Rights Riot Robbery Rogue Rules Rulings
+Sabotage Safeguard Safety Sanction Savvy Scene Scheme Sealed record Search and rescue team Search warrant Secret Seize Selection Sentence Sergeant Seriousness Services Sheriff Shyster Sighting Situation Skillful Slander Slaying Smuggling Solution Solve Sorrow Squad Statute Statute of limitation Stealing Stipulation Stolen Subdue Subpoena Succor Summons Suppress Surveillance Suspect Suspected Suspicion Suspicious Sworn System
+Tactic Tantamount Technique Testify Testimony Threaten Threatening Thwart Traffic Transaction Transfer Treatment Trespass Trial Trooper Trust
+Unacceptable Unauthorized Unclaimed Unconstitutional Undercover Underpaid Unintentional Unique Unit Unjust Unknown Unlawful Unlikely Uphold
+Vagrancy Vandalism Veteran Victim Victimize Vigilante Violate Violation Volume Volunteer
+Wanted poster Ward Warrant Weapon Will Wiretap Wisdom Witness Writ Wrong
+X-ray
+Yell Yelp Youth
+Zeal Zealous
+Alpha
+Bravo
+Charlie
+Delta
+Echo
+Foxtrot
+Golf
+Hotel
+India
+Juliet
+Kilo
+Lima
+Mike
+November
+Oscar
+Papa
+Quebec
+Romeo
+Sierra
+Tango
+Uniform
+Victor
+Whiskey
+X-ray
+Yankee
+Zulu
