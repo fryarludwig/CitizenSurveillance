@@ -15,29 +15,25 @@ class WatsonWord:
         self.source      = ["user"]
         self.word        = "tcpip"
 
-class Credentials:
-    def __init__(self, auth_json):
-        self.headers = auth_json['headers']
-        self.username = auth_json['username']
-        self.password = auth_json['password']
-        self.url = auth_json['url']
-        self.uri = auth_json['uri']
 
+class WatsonUtility:
+    def __init__(self, settings):
+        self.headers = settings['headers'] if 'headers' in settings else ""
+        self.username = settings['username'] if 'username' in settings else ""
+        self.password = settings['password'] if 'password' in settings else ""
+        self.url = settings['url'] if 'url' in settings else ""
+        self.uri = settings['uri'] if 'uri' in settings else ""
+        self.custom_id = "Test_Scanner_1"
+        self.corpus_name = "corpus.txt"
+
+    @property
     def __str__(self):
         return 'Header:   {}\n' \
                'User:     {}\n' \
                'Password: {}\n' \
                'Url:      {}\n' \
-               'Custom:   {}'.format(self.headers,self.username, self.password, self.url, self.uri)
+               'Custom:   {}'.format(self.headers, self.username, self.password, self.url, self.uri)
 
-class WatsonInterface:
-    def __init__(self):
-        self.auth = Credentials(json.load(open('./settings.json', 'r')))
-        self.custom_id = "Test_Scanner_1"
-        self.corpus_name = "corpus.txt"
-
-    def __str__(self):
-        return str(self.auth)
 
     def Post(self, destination, payload=None, verify=False):
         print "Posting: {}".format(destination)
@@ -240,14 +236,3 @@ class WatsonInterface:
         uri = "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/"
         r = self.Get(uri)
         sys.exit(0)
-
-if False and __name__ == '__main__':
-    print 'Hello world'
-    test_watson = WatsonInterface()
-    test_watson.CreateModel("Test_Scanner_2", "First model to test scanner customization")
-    test_watson.AddCorpusFile()
-    test_watson.ShowOOVs()
-    test_watson.GetModelStatus()
-    test_watson.DeleteModel()
-
-    exit(0)
