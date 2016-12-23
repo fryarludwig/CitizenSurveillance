@@ -1,0 +1,7 @@
+{
+  "base_url": "https://stream.watsonplatform.net/speech-to-text/api",
+  "endpoint": "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/",
+  "password": "your_password",
+  "username": "insertyour-user-name-here-inthisstring",
+  "headers": {"Content-Type": "application/json"}
+}

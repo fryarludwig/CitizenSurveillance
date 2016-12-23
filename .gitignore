@@ -5,6 +5,7 @@ watson_example.py
 *.from-corpus
 *s.user
 .idea
+*-log.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

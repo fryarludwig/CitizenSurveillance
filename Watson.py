@@ -3,9 +3,13 @@ import requests
 import json
 import codecs
 import sys, time
+from LogUtility import *
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+WRITE_LOG_FILE = False
+CURRENT_TIME = datetime.datetime.now().strftime('%Y_%m_%d-%H_%M')
+LOGFILE_PATH = './Logs/Watson-{}-log.txt'.format(CURRENT_TIME)
 
 class WatsonWord:
     def __init__(self):
@@ -17,43 +21,49 @@ class WatsonWord:
 
 
 class WatsonUtility:
-    def __init__(self, settings):
+    def __init__(self, settings, logger=None):
         self.headers = settings['headers'] if 'headers' in settings else ""
         self.username = settings['username'] if 'username' in settings else ""
         self.password = settings['password'] if 'password' in settings else ""
-        self.url = settings['url'] if 'url' in settings else ""
-        self.uri = settings['uri'] if 'uri' in settings else ""
+        self.base_url = settings['base_url'] if 'base_url' in settings else ""
+        self.endpoint = settings['endpoint'] if 'endpoint' in settings else ""
         self.custom_id = "Test_Scanner_1"
         self.corpus_name = "corpus.txt"
+        if logger is None:
+            if WRITE_LOG_FILE:
+                self.logger = LogUtility(LOGFILE_PATH)
+            else:
+                self.logger = LogUtility()
+        else:
+            self.logger = logger if logger is not None else LogUtility(LOGFILE_PATH)
+        self.logger.Trace("Created WatsonUtility")
 
     @property
     def __str__(self):
-        return 'Header:   {}\n' \
-               'User:     {}\n' \
-               'Password: {}\n' \
-               'Url:      {}\n' \
-               'Custom:   {}'.format(self.headers, self.username, self.password, self.url, self.uri)
-
+        return 'User: {}\n' \
+               'Pass: {}\n' \
+               'Url:  {}\n' \
+               'API:  {}'.format(self.username, self.password, self.base_url, self.endpoint)
 
     def Post(self, destination, payload=None, verify=False):
-        print "Posting: {}".format(destination)
-        resp = requests.post(destination, auth=(self.auth.username, self.auth.password), verify=verify,
-                             headers=self.auth.headers, data=payload)
-        print "Response: {}".format(resp)
-        return resp
-
-    def Get(self, destination, payload=None, verify=False):
-        print "Getting: {}".format(destination)
-        resp = requests.get(destination, auth=(self.auth.username, self.auth.password), verify=verify,
-                             headers=self.auth.headers, data=payload)
-        print "Response: {}".format(resp)
+        self.logger.Trace("Posting: {}".format(destination))
+        resp = requests.post(destination, auth=(self.username, self.password), verify=verify,
+                             headers=self.headers, data=payload)
+        self.logger.Trace("Response: {}".format(resp))
         return resp
 
     def Put(self, destination, payload=None, verify=False):
-        print "Putting: {}".format(destination)
-        resp = requests.put(destination, auth=(self.auth.username, self.auth.password), verify=verify,
-                             headers=self.auth.headers, data=payload)
-        print "Response: {}".format(resp)
+        self.logger.Trace( "Putting: {}".format(destination))
+        resp = requests.put(destination, auth=(self.username, self.password), verify=verify,
+                             headers=self.headers, data=payload)
+        self.logger.Trace("Response: {}".format(resp))
+        return resp
+
+    def Get(self, destination, verify=False):
+        self.logger.Trace( "Getting: {}".format(destination))
+        resp = requests.get(destination, auth=(self.username, self.password), verify=verify,
+                             headers=self.headers, data=payload)
+        self.logger.Trace("Response: {}".format(resp))
         return resp
 
     def CreateModel(self, name, description, base_model="en-US_BroadbandModel"):
@@ -64,7 +74,7 @@ class WatsonUtility:
         print "\nCreating custom mmodel..."
         data = {"name": name, "base_model_name": base_model, "description": description}
         jsonObject = json.dumps(data).encode('utf-8')
-        resp = self.Post(self.auth.uri, jsonObject)
+        resp = self.Post(self.endpoint, jsonObject)
 
         if resp.status_code != 201:
             print "Failed to create model"
@@ -83,7 +93,7 @@ class WatsonUtility:
         # them with different names
         ##########################################################################
         print "\nAdding corpus file..."
-        uri = self.auth.uri + "/" + self.custom_id + "/corpora/" + corpus_name
+        uri = self.endpoint + self.custom_id + "/corpora/" + corpus_name
         self.corpus_name = corpus_name
 
         with open(corpus_file, 'rb') as f:
@@ -101,7 +111,7 @@ class WatsonUtility:
         # we need to loop until the status becomes 'analyzed' for this corpus.
         ##########################################################################
         print "Checking status of corpus analysis..."
-        uri = self.auth.uri + "/" +  self.custom_id + "/corpora/" + self.corpus_name
+        uri = self.endpoint +  self.custom_id + "/corpora/" + self.corpus_name
         r = self.Get(uri)
         respJson = r.json()
         status = respJson['status']
@@ -122,7 +132,7 @@ class WatsonUtility:
         # validate the auto-added sounds-like field. Probably a good thing to do though.
         ##########################################################################
         print "\nListing words..."
-        uri = self.auth.uri + "/" + self.custom_id + "/words?sort=count"
+        uri = self.endpoint + self.custom_id + "/words?sort=count"
         r = self.Get(uri)
         print "Listing words returns: ", r.status_code
         file = codecs.open("output.OOVs.corpus", 'wb', 'utf-8')
@@ -139,7 +149,7 @@ class WatsonUtility:
         data = {"sounds_like": ["T. C. P. I. P."], "display_as": "TCP/IP"}
         wordToAdd = "tcpip"
         u = unicode(wordToAdd, "utf-8")
-        uri = self.auth.uri + self.custom_id + "/words/" + u
+        uri = self.endpoint + self.custom_id + "/words/" + u
         jsonObject = json.dumps(data).encode('utf-8')
         r = self.Put(uri, jsonObject)
         print "Single word added!"
@@ -158,7 +168,7 @@ class WatsonUtility:
         ##########################################################################
         # Get status of model - only continue to training if 'ready'
         ##########################################################################
-        uri = self.auth.uri + "/" + self.custom_id
+        uri = self.endpoint + self.custom_id
         r = self.Get(uri)
         respJson = r.json()
         print respJson
@@ -176,7 +186,7 @@ class WatsonUtility:
         print "Multiple words added!"
         # Show all words added so far
         print "\nListing words..."
-        uri = self.auth.uri + "/" + self.custom_id + "/words?word_type=user&sort=alphabetical"
+        uri = self.endpoint + self.custom_id + "/words?word_type=user&sort=alphabetical"
         r = self.Get(uri)
         file = codecs.open("output.OOVs.user", 'wb', 'utf-8')
         print r.text
@@ -191,7 +201,7 @@ class WatsonUtility:
         # status becomes 'available'.
         ##########################################################################
         print "\nTraining custom model..."
-        uri = self.auth.uri + self.custom_id + "/train"
+        uri = self.endpoint + self.custom_id + "/train"
         data = {}
         jsonObject = json.dumps(data).encode('utf-8')
         r = self.Post(uri, jsonObject)
@@ -203,7 +213,7 @@ class WatsonUtility:
         ##########################################################################
         # Get status of training and loop until done
         ##########################################################################
-        uri = self.auth.uri + self.custom_id
+        uri = self.endpoint + self.custom_id
         r = self.Get(uri)
         respJson = r.json()
         status = respJson['status']
@@ -217,11 +227,10 @@ class WatsonUtility:
             time_to_run += 10
         print "Training complete!"
 
-        print "\nGetting custom models..."
-        uri = self.auth.uri
-        r = self.Get(uri)
-        print r.text
-        sys.exit(0)
+    def FetchModels(self):
+        self.logger.Trace("\nGetting custom models...")
+        r = self.Get(self.endpoint)
+        return json.loads(r.text)
 
     def DeleteModel(self):
         ##########################################################################
