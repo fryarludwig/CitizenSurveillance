@@ -1,0 +1,14 @@
+{
+   "results": [
+      {
+         "alternatives": [
+            {
+               "confidence": 0.115, 
+               "transcript": "pardon "
+            }
+         ], 
+         "final": true
+      }
+   ], 
+   "result_index": 0
+}

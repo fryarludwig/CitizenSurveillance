@@ -5,9 +5,7 @@ import datetime
 
 from Watson import *
 
-
 __title__ = 'Watson Training Tool'
-
 
 WRITE_LOG_FILE = False
 SETTINGS_PATH = './settings.json'
@@ -22,12 +20,23 @@ else:
 
 if __name__ == '__main__':
     watson = WatsonUtility(json.load(open(SETTINGS_PATH, 'r')), logger)
-    existing_models = watson.FetchModels()
+
+    # existing_models = watson.FetchModelsAsList()
+    # for model in existing_models:
+    #     watson.DeleteModel(model.customization_id)
+    #
+    # resp = watson.CreateModel("Test_Scanner_2", "First model to test scanner customization")
+    # logger.Trace(resp)
+
+    existing_models = watson.FetchModelsAsList()
     logger.Info(existing_models)
+    current_corpus = WatsonCorpus("testCorpus", CORPUS_PATH, existing_models[0].customization_id)
+    # watson.AddCorpusObject(current_corpus)
 
-
-    # watson.CreateModel("Test_Scanner_2", "First model to test scanner customization")
-    # watson.AddCorpusFile()
-    # watson.ShowOOVs()
-    # watson.GetModelStatus()
-    # watson.DeleteModel()
+    for model in existing_models:
+        watson.ShowOOVs(model.customization_id)
+        watson.CheckCorpusStatus(model, current_corpus.name)
+        watson.StartTraining(model.customization_id)
+        # watson.GetModelStatus(model.customization_id)
+        results = watson.TranscribeAudio(model.customization_id, "./IS/deer_in_the_road.wav")
+        logger.Info(results)

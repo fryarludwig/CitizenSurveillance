@@ -38,18 +38,44 @@ class LogUtility(object):
 
     def Error(self, message):
         if self.show_error:
-
-            self.write(self.str_error.format(pprint.pformat(message)))
+            if isinstance(message, list):
+                for part in message:
+                    self.write(self.str_error.format(part))
+            elif isinstance(message, dict):
+                for key, value in message.iteritems():
+                    self.write(self.str_error.format(key + ": " + value))
+            else:
+                self.write(self.str_error.format(message))
 
     def Warn(self, message):
         if self.show_warn:
-
-            self.write(self.str_warn.format(pprint.pformat(message)))
+            if isinstance(message, list):
+                for part in message:
+                    self.write(self.str_warn.format(part))
+            elif isinstance(message, dict):
+                for key, value in message.iteritems():
+                    self.write(self.str_warn.format(key + ": " + value))
+            else:
+                self.write(self.str_warn.format(message))
 
     def Info(self, message):
         if self.show_info:
-            self.write(self.str_info.format(pprint.pformat(message)))
+            if isinstance(message, list):
+                for part in message:
+                    self.write(self.str_trace.format(part))
+            elif isinstance(message, dict):
+                for key, value in message.iteritems():
+                    self.write(self.str_trace.format("Key " + str(key) + " has value: " + str(value)))
+            else:
+                self.write(self.str_trace.format(message))
 
     def Trace(self, message):
         if self.show_trace:
-            self.write(self.str_trace.format(pprint.pformat(message)))
+            if isinstance(message, list):
+                for part in message:
+                    self.write(self.str_trace.format(part))
+            elif isinstance(message, dict):
+                for key, value in message.iteritems():
+                    self.write(self.str_trace.format(key + ": " + value))
+            else:
+                self.write(self.str_trace.format(message))
