@@ -62,7 +62,7 @@ class WatsonUtility:
     def Get(self, destination, verify=False):
         self.logger.Trace( "Getting: {}".format(destination))
         resp = requests.get(destination, auth=(self.username, self.password), verify=verify,
-                             headers=self.headers, data=payload)
+                             headers=self.headers)
         self.logger.Trace("Response: {}".format(resp))
         return resp
 

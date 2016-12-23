@@ -1,5 +1,5 @@
 import os
-import json
+import pprint
 import datetime
 import sys
 
@@ -38,17 +38,18 @@ class LogUtility(object):
 
     def Error(self, message):
         if self.show_error:
-            self.write(self.str_error.format(message))
+
+            self.write(self.str_error.format(pprint.pformat(message)))
 
     def Warn(self, message):
         if self.show_warn:
-            self.write(self.str_warn.format(message))
+
+            self.write(self.str_warn.format(pprint.pformat(message)))
 
     def Info(self, message):
         if self.show_info:
-            self.write(self.str_info.format(message))
+            self.write(self.str_info.format(pprint.pformat(message)))
 
     def Trace(self, message):
         if self.show_trace:
-            self.write(self.str_trace.format(message))
-
+            self.write(self.str_trace.format(pprint.pformat(message)))
